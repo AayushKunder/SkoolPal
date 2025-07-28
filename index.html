@@ -1,92 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkoolPal – Your everyday school assistant</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkoolPal</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
     }
     header {
-      background-color: #007bff;
+      background-color: #4CAF50;
       color: white;
-      padding: 20px;
+      padding: 1rem;
       text-align: center;
-    }
-    h1 {
-      margin: 0;
-      font-size: 2em;
     }
     nav {
       display: flex;
       justify-content: center;
-      gap: 30px;
-      background-color: #e9ecef;
-      padding: 10px;
+      background-color: #333;
       flex-wrap: wrap;
     }
     nav a {
-      color: #007bff;
+      color: white;
+      padding: 1rem;
       text-decoration: none;
-      font-weight: bold;
+      display: inline-block;
+    }
+    nav a:hover {
+      background-color: #4CAF50;
     }
     section {
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 20px;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 2rem;
     }
     h2 {
-      color: #007bff;
+      color: #4CAF50;
     }
-    ul {
-      padding-left: 20px;
+    form {
+      margin-top: 1rem;
     }
-    li {
-      margin-bottom: 10px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #f1f1f1;
-      font-size: 0.9em;
-      color: #666;
-    }
-    a.download-link {
-      display: inline-block;
-      margin-top: 5px;
-      color: #0056b3;
-      text-decoration: none;
-    }
-    a.download-link:hover {
-      text-decoration: underline;
-    }
-    form input, form select, form textarea, form button {
-      display: block;
+    input, textarea {
       width: 100%;
-      margin-bottom: 10px;
-      padding: 10px;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
       border: 1px solid #ccc;
       border-radius: 4px;
     }
-    form button {
-      background-color: #007bff;
+    button {
+      background-color: #4CAF50;
       color: white;
+      padding: 0.7rem 1.2rem;
       border: none;
+      border-radius: 4px;
       cursor: pointer;
     }
-    form button:hover {
-      background-color: #0056b3;
+    footer {
+      text-align: center;
+      background-color: #333;
+      color: white;
+      padding: 1rem;
     }
   </style>
 </head>
+
 <body>
   <header>
     <h1>SkoolPal</h1>
@@ -94,94 +75,86 @@
   </header>
 
   <nav>
-    <a href="#about">About</a>
+    <a href="#about">About Us</a>
     <a href="#notes">2024 Notes</a>
     <a href="#papers">2024 Question Papers</a>
     <a href="#textbooks">2024 Textbook PDFs</a>
-    <a href="#streams">Commerce 2025 / Science</a>
-    <a href="#contribute">Contribute</a>
-    <a href="#suggestions">Suggestions</a>
-    <a href="#contact">Contact</a>
+    <a href="#commerce">2024 Commerce</a>
+    <a href="#science">2025 Science</a>
+    <a href="#lostfound">Lost & Found</a>
+    <a href="#feedback">Feedback</a>
+    <a href="#share">Share Material</a>
+    <a href="#contact">Contact Us</a>
   </nav>
 
   <section id="about">
-    <h2>📌 About Us</h2>
-    <p>SkoolPal is a student-created platform designed to solve everyday school problems — from sharing notes and textbooks to organizing study resources and giving feedback. It's built to make school life simpler, smarter, and more fun for students.</p>
+    <h2>About Us</h2>
+    <p>SkoolPal is designed to help students by organizing and sharing important academic resources, providing a lost and found system, and collecting valuable feedback to improve school life.</p>
   </section>
 
   <section id="notes">
-    <h2>📘 2024 Notes</h2>
-    <ul>
-      <li>English Notes – <a class="download-link" href="#">Download PDF</a></li>
-      <li>Math Notes – <a class="download-link" href="#">Download PDF</a></li>
-      <li>Science Notes – <a class="download-link" href="#">Download PDF</a></li>
-    </ul>
+    <h2>2024 Notes</h2>
+    <p>Download latest class notes shared by students and teachers.</p>
   </section>
 
   <section id="papers">
-    <h2>📄 2024 Question Papers</h2>
-    <ul>
-      <li>English Paper – <a class="download-link" href="#">Download</a></li>
-      <li>Math Paper – <a class="download-link" href="#">Download</a></li>
-      <li>Science Paper – <a class="download-link" href="#">Download</a></li>
-    </ul>
+    <h2>2024 Question Papers</h2>
+    <p>Access previous and sample question papers for 2024.</p>
   </section>
 
   <section id="textbooks">
-    <h2>📚 2024 Textbook PDFs</h2>
-    <ul>
-      <li>English Textbook – <a class="download-link" href="#">Download</a></li>
-      <li>Math Textbook – <a class="download-link" href="#">Download</a></li>
-      <li>Science Textbook – <a class="download-link" href="#">Download</a></li>
-    </ul>
+    <h2>2024 Textbook PDFs</h2>
+    <p>Find downloadable textbooks for all your subjects.</p>
   </section>
 
-  <section id="streams">
-    <h2>📖 Commerce 2025 & Science</h2>
-    <ul>
-      <li>Commerce Notes – <a class="download-link" href="#">Download</a></li>
-      <li>Commerce Papers – <a class="download-link" href="#">Download</a></li>
-      <li>Science 2025 Guide – <a class="download-link" href="#">Download</a></li>
-    </ul>
+  <section id="commerce">
+    <h2>2024 Commerce</h2>
+    <p>Resources related to Commerce stream students of 2024.</p>
   </section>
 
-  <section id="contribute">
-    <h2>🚀 Contribute Your Resources</h2>
-    <p>Share your own notes, question papers, textbooks or ideas with fellow students. Fill the form below and help grow the SkoolPal community!</p>
+  <section id="science">
+    <h2>2025 Science</h2>
+    <p>Resources for Science students preparing for 2025 exams.</p>
+  </section>
+
+  <section id="lostfound">
+    <h2>Lost & Found</h2>
     <form action="https://formspree.io/f/mjkorowa" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email (optional)">
-      <select name="type" required>
-        <option value="">Select Resource Type</option>
-        <option value="notes">Notes</option>
-        <option value="questionpaper">Question Paper</option>
-        <option value="textbook">Textbook</option>
-        <option value="other">Other</option>
-      </select>
-      <input type="text" name="subject" placeholder="Subject / Title" required>
-      <input type="url" name="link" placeholder="Google Drive / Share Link" required>
-      <textarea name="description" rows="3" placeholder="Brief Description (optional)"></textarea>
-      <button type="submit">Submit Resource</button>
+      <label for="lostItem">Describe Lost/Found Item:</label>
+      <textarea name="message" id="lostItem" required></textarea>
+      <input type="email" name="email" placeholder="Your email" required />
+      <button type="submit">Submit</button>
     </form>
   </section>
 
-  <section id="suggestions">
-    <h2>💡 Suggestions</h2>
-    <p>Have an idea to improve SkoolPal? We’d love to hear it! Whether it's a new feature, better content, or a request — your feedback helps us grow.</p>
-    <a class="download-link" href="#">Submit a Suggestion</a>
+  <section id="feedback">
+    <h2>Student Feedback</h2>
+    <form action="https://formspree.io/f/mjkorowa" method="POST">
+      <label for="feedback">Your Feedback about the School:</label>
+      <textarea name="message" id="feedback" required></textarea>
+      <input type="email" name="email" placeholder="Your email" required />
+      <button type="submit">Submit Feedback</button>
+    </form>
+  </section>
+
+  <section id="share">
+    <h2>Share Your Material</h2>
+    <form action="https://formspree.io/f/mjkorowa" method="POST">
+      <label for="material">Upload or link your Notes, Papers, or PDFs:</label>
+      <textarea name="message" id="material" placeholder="Paste link or describe your file" required></textarea>
+      <input type="email" name="email" placeholder="Your email" required />
+      <button type="submit">Submit</button>
+    </form>
   </section>
 
   <section id="contact">
-    <h2>📬 Contact Us</h2>
-    <p>If you have any questions, issues, or would like to collaborate, feel free to contact us:</p>
-    <ul>
-      <li>Email: <a href="mailto:aayushkunder@gmail.com">skoolpal.team@gmail.com</a></li>
-      <li>Instagram: <a href="#">@skoolpal.official</a></li>
-    </ul>
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:aayushkunder@gmail.com">aayushkunder@gmail.com</a></p>
   </section>
 
   <footer>
-    &copy; 2025 SkoolPal. Built with care by students, for students.
+    <p>&copy; 2025 SkoolPal. All rights reserved.</p>
   </footer>
 </body>
+
 </html>
