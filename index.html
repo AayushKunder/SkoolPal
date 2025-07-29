@@ -6,64 +6,135 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SkoolPal</title>
   <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f9f9f9;
+      background: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b') no-repeat center center fixed;
+      background-size: cover;
       color: #333;
     }
     header {
-      background-color: #4CAF50;
+      background: rgba(0, 102, 204, 0.85);
       color: white;
-      padding: 1rem;
+      padding: 2rem;
       text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
     }
     nav {
       display: flex;
       justify-content: center;
-      background-color: #333;
-      flex-wrap: wrap;
+      gap: 1rem;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
     nav a {
       color: white;
-      padding: 1rem;
       text-decoration: none;
-      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background 0.3s;
     }
     nav a:hover {
-      background-color: #4CAF50;
+      background-color: #007BFF;
     }
     section {
-      padding: 2rem;
+      padding: 3rem 2rem;
+      max-width: 900px;
+      margin: auto;
+      animation: fadeIn 0.7s ease-in-out;
+      background-color: rgba(255,255,255,0.95);
+      border-radius: 10px;
+      margin-top: 2rem;
     }
     h2 {
-      color: #4CAF50;
+      color: #007BFF;
+      font-size: 2rem;
+      margin-bottom: 1rem;
     }
     form {
       margin-top: 1rem;
     }
-    input, textarea {
+    input, textarea, select {
       width: 100%;
-      padding: 0.5rem;
+      padding: 0.75rem;
       margin-top: 0.5rem;
       margin-bottom: 1rem;
       border: 1px solid #ccc;
-      border-radius: 4px;
+      border-radius: 6px;
+      font-size: 1rem;
     }
     button {
-      background-color: #4CAF50;
+      background-color: #007BFF;
       color: white;
-      padding: 0.7rem 1.2rem;
+      padding: 0.75rem 1.5rem;
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
+      font-size: 1rem;
       cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .page-section {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    .page-section.active {
+      display: block;
+      opacity: 1;
     }
     footer {
       text-align: center;
-      background-color: #333;
+      background-color: rgba(0,0,0,0.8);
       color: white;
       padding: 1rem;
+      margin-top: 2rem;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    .dark-mode {
+      background-color: #121212;
+      color: #eee;
+    }
+    .dark-mode header {
+      background: #1a1a1a;
+    }
+    .dark-mode nav {
+      background-color: #000;
+    }
+    .dark-mode section {
+      background-color: #1e1e1e;
+    }
+    .dark-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     }
   </style>
 </head>
@@ -75,49 +146,52 @@
   </header>
 
   <nav>
-    <a href="#about">About Us</a>
-    <a href="#notes">2024 Notes</a>
-    <a href="#papers">2024 Question Papers</a>
-    <a href="#textbooks">2024 Textbook PDFs</a>
-    <a href="#commerce">2024 Commerce</a>
-    <a href="#science">2025 Science</a>
-    <a href="#lostfound">Lost & Found</a>
-    <a href="#feedback">Feedback</a>
-    <a href="#share">Share Material</a>
-    <a href="#contact">Contact Us</a>
+    <a href="#home" onclick="showSection('home')">Home</a>
+    <a href="#notes" onclick="showSection('notes')">Notes</a>
+    <a href="#papers" onclick="showSection('papers')">Question Papers</a>
+    <a href="#textbooks" onclick="showSection('textbooks')">Textbooks</a>
+    <a href="#commerce" onclick="showSection('commerce')">Commerce</a>
+    <a href="#science" onclick="showSection('science')">Science</a>
+    <a href="#lostfound" onclick="showSection('lostfound')">Lost & Found</a>
+    <a href="#feedback" onclick="showSection('feedback')">Feedback</a>
+    <a href="#share" onclick="showSection('share')">Share Material</a>
+    <a href="#contact" onclick="showSection('contact')">Contact</a>
   </nav>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p>SkoolPal is designed to help students by organizing and sharing important academic resources, providing a lost and found system, and collecting valuable feedback to improve school life.</p>
+  <section id="home" class="page-section active">
+    <h2>Welcome to SkoolPal</h2>
+    <p>SkoolPal is a platform made for students, by students. Whether you're looking for study materials, sharing notes, or reporting lost items — we’ve got your back.</p>
   </section>
 
-  <section id="notes">
+  <section id="notes" class="page-section">
     <h2>2024 Notes</h2>
-    <p>Download latest class notes shared by students and teachers.</p>
+    <a href="#" target="_blank">Download 2024 Notes</a><br>
+    <a href="#" target="_blank">Download 2023 Notes</a>
   </section>
 
-  <section id="papers">
-    <h2>2024 Question Papers</h2>
-    <p>Access previous and sample question papers for 2024.</p>
+  <section id="papers" class="page-section">
+    <h2>Question Papers</h2>
+    <a href="#" target="_blank">Periodic Test (PDF)</a><br>
+    <a href="#" target="_blank">Mid-Term and Annual Exams</a>
   </section>
 
-  <section id="textbooks">
+  <section id="textbooks" class="page-section">
     <h2>2024 Textbook PDFs</h2>
-    <p>Find downloadable textbooks for all your subjects.</p>
+    <a href="#" target="_blank">Download Math Textbook</a><br>
+    <a href="#" target="_blank">Download Science Textbook</a>
   </section>
 
-  <section id="commerce">
+  <section id="commerce" class="page-section">
     <h2>2024 Commerce</h2>
-    <p>Resources related to Commerce stream students of 2024.</p>
+    <a href="#" target="_blank">Download Commerce Note</a>
   </section>
 
-  <section id="science">
+  <section id="science" class="page-section">
     <h2>2025 Science</h2>
-    <p>Resources for Science students preparing for 2025 exams.</p>
+    <a href="#" target="_blank">Download Science Paper</a>
   </section>
 
-  <section id="lostfound">
+  <section id="lostfound" class="page-section">
     <h2>Lost & Found</h2>
     <form action="https://formspree.io/f/mjkorowa" method="POST">
       <label for="lostItem">Describe Lost/Found Item:</label>
@@ -127,7 +201,7 @@
     </form>
   </section>
 
-  <section id="feedback">
+  <section id="feedback" class="page-section">
     <h2>Student Feedback</h2>
     <form action="https://formspree.io/f/mjkorowa" method="POST">
       <label for="feedback">Your Feedback about the School:</label>
@@ -137,7 +211,7 @@
     </form>
   </section>
 
-  <section id="share">
+  <section id="share" class="page-section">
     <h2>Share Your Material</h2>
     <form action="https://formspree.io/f/mjkorowa" method="POST">
       <label for="material">Upload or link your Notes, Papers, or PDFs:</label>
@@ -147,7 +221,7 @@
     </form>
   </section>
 
-  <section id="contact">
+  <section id="contact" class="page-section">
     <h2>Contact Us</h2>
     <p>Email: <a href="mailto:aayushkunder@gmail.com">aayushkunder@gmail.com</a></p>
   </section>
@@ -155,6 +229,21 @@
   <footer>
     <p>&copy; 2025 SkoolPal. All rights reserved.</p>
   </footer>
+
+  <button class="dark-toggle" onclick="toggleDarkMode()">🌓</button>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
 </body>
 
 </html>
