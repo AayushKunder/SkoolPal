@@ -217,15 +217,15 @@
 
   <section id="lostfound" class="page-section">
     <h2>Lost & Found</h2>
-    <form onsubmit="addLostItem(event)">
+    <form action="https://formspree.io/f/mjkorowa" method="POST">
       <label for="lostItem">Describe Lost/Found Item:</label>
-      <textarea id="lostItem" required></textarea>
-      <input type="email" id="emailInput" placeholder="Your email" required />
+      <textarea name="message" id="lostItem" required></textarea>
+      <input type="email" name="email" placeholder="Your email" required />
       <button type="submit">Submit</button>
     </form>
     <div class="lost-items">
       <h3>Reported Items</h3>
-      <ul id="lostItemsList"></ul>
+      <ul id="lostList">Loading reported items...</ul>
     </div>
   </section>
 
@@ -250,7 +250,9 @@
 
   <script>
     function showSection(id) {
-      document.querySelectorAll('.page-section').forEach(section => section.classList.remove('active'));
+      document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.remove('active');
+      });
       document.getElementById(id).classList.add('active');
     }
 
@@ -258,25 +260,34 @@
       document.body.classList.toggle('dark-mode');
     }
 
-    function addLostItem(e) {
-      e.preventDefault();
-      const item = document.getElementById('lostItem').value;
-      const email = document.getElementById('emailInput').value;
-      const list = document.getElementById('lostItemsList');
+    async function loadLostItems() {
+      const list = document.getElementById("lostList");
+      list.innerHTML = "Loading...";
 
-      const li = document.createElement('li');
-      li.innerHTML = `<strong>${item}</strong> - Contact: ${email} <button onclick="removeItem(this)">Item Found?</button>`;
-      list.appendChild(li);
+      try {
+        const res = await fetch("https://script.google.com/macros/s/AKfycbwDSOz-liQrO2ISYMSN9N2xlV07Mo-rbX6_GvNO3JrHNwPGTLK4ddKI4BpaQaLxfaZt2g/exec");
+        const data = await res.json();
+        list.innerHTML = "";
 
-      document.getElementById('lostItem').value = '';
-      document.getElementById('emailInput').value = '';
-    }
-
-    function removeItem(button) {
-      if (confirm("Have you contacted the person before removing this report?")) {
-        button.parentElement.remove();
+        data.forEach(entry => {
+          const li = document.createElement("li");
+          li.innerHTML = `<strong>${entry.item}</strong> - Contact: <a href="mailto:${entry.email}">${entry.email}</a><br><button onclick="resolveItem(this)">Mark as Resolved</button>`;
+          list.appendChild(li);
+        });
+      } catch (err) {
+        list.innerHTML = "Failed to load items.";
       }
     }
+
+    function resolveItem(button) {
+      const confirm = window.confirm("Have you contacted the person who lost this item?");
+      if (confirm) {
+        const li = button.parentElement;
+        li.remove();
+      }
+    }
+
+    loadLostItems();
   </script>
 </body>
 
